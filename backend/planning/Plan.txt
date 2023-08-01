@@ -1,0 +1,50 @@
+EndPoints
+
+Login
+/Register Routes:
+/auth/login
+/auth/register
+
+Products:
+/products - get all Products
+/products/:id -get single product 
+/products/:id -update single product
+/products/:id -delete single product 
+
+Users Routes
+
+Admin and user Routes:
+/users - get all users (admin role)
+
+/users/:id - get a single users
+/users/:id - add a user 
+/users/:id - update single user 
+/users/:id - delete ingle user 
+
+
+Cart  Routes:
+/cart/:userid - get all user cart items 
+/cart/:userid/:cartItemid - add to cart
+/cart/:userid/:cartItemid - update cart 
+/cart/:userid/:cartItemid- delete cart item 
+
+Orders 
+/orders - get all orders for all users
+
+/orders/:userid - get all orders from a specific user account 
+
+/orders/:userid/:orderid - get a single order from a specific user account
+
+/orders/:userid/:orderid - update  a single order from a specific user account
+
+
+/orders/:userid/:orderid - delete a single order from a specific user account
+
+/orders/:userid - make an order
+
+Plan
+1: PLan EndPoints
+2: Design the DB.
+3: Create the DB.
+4: Connect Node.js/Express.js with PostgreSQL.
+5: 

@@ -1,0 +1,3 @@
+  title: Swagger Ecommerce - OpenAPI 3.0
+  description: |-
+    This is an API that allows users to gain access to the data stored in my Full Stack Ecommernce store. Using the API will enable users to perfrom: Create, Update and Delete actions (CRUD actions) on the various sections of their site.

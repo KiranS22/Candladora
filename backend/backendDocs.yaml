@@ -1,0 +1,408 @@
+openapi: 3.0.1
+info:
+  title: 'Candladora - PERN Stack E-commerce API '
+  version: 1.1.0
+  description: >-
+    This API was created for a PERN Stack  e-commerce application called
+    Candladora. A website that sells candles! I made this application as a way
+    of showing all of the skills that I have learnt whilst studying on the
+    Codecademy Full-stack Engineer Career path. Features of this API include: 
+    Local Login & Register ; Login & Register with Google (OAuth2.0);Create,
+    Read, Update, ad Delete (CRUD) operations on the shopping cart  and
+    products; as well as complete  Stripe checkout/payment  facilities . 
+paths:
+  /auth/register:
+    summary: This route allows the user to register themselves onto the e-commerce site
+    description: >-
+      This route allows the user to register themselves locally using a form
+      that is created on the frontend.
+    post:
+      summary: Creates a new account in the site using a local frontend form
+      description: ''
+      operationId: register_user
+      responses:
+        '200':
+          description: The registered user 
+        '401':
+          description: Bad request. Failed to register user
+          
+      tags:
+        - Local User Authentication
+  /auth/login:
+    summary: 'This route allows users to login to the site '
+    description: >-
+      This route allows users to login locally via a frontend form. Doing this
+      will enable users to experience the full potential of the site as they
+      will be able to add products; checkout their carts; and view their order
+      history
+    post:
+      summary: Allow users to login locally via  a frontend form
+      description: ''
+      operationId: login_user
+      responses:
+        '200':
+          description: Invalid User Details
+        '201':
+          description: Logged In Successfully
+        '404':
+          description: Something went wrong
+         
+       
+      tags:
+        - Local User Authentication
+  /auth/auth-user:
+    summary: 'This route authenticates the user before logging them in '
+    description: >-
+      This route checks if there is a user in the session object if so then they
+      are okay to be logged in. Uf not an unauthorised error will be thrown
+    get:
+      summary: >-
+        This route makes sure the user is authenticated before they are allowed
+        to login
+      description: ''
+      operationId: authenticate_user
+      responses:
+        '201':
+          description: User Authenticated
+        '403':
+          description: User Not Logged In
+        '404':
+          description: Something went wrong
+     
+      tags:
+        - Local User Authentication
+  /auth/logout:
+    summary: 'Allows users to log out once they have finished using Candladora '
+    description: >-
+      Accessing this route allows the user to log out - Meaning that , both the
+      Express and/or Passport sessions are destroyed.
+    post:
+      summary: This route allows a user to logout
+      description: >-
+        This route allows a user to logout by destroying the session that was
+        created when they login 
+      operationId: logout_user
+      responses:
+        '200':
+          description: Logged Out Successfully
+        '404':
+          description: Something went wrong
+      tags:
+        - Local User Authentication
+  /auth/update-profile:
+    summary: >-
+      This Route allows authenticated users to update their profile information
+      excluding their password
+    put:
+      summary: Update users profile information (excluding their password)
+      description: ''
+      operationId: ''
+      responses:
+        '200':
+          description: Profile Updated Successfully
+        '404':
+          description: Something went wrong
+      tags:
+        - Local User Authentication      
+  /auth/google:
+    summary: 'Checks if the user who is logging in with Google ,is authenticated '
+    description: >-
+      This route identifies the scope at which the users' information  is going
+      to be accessed. The information is then used to authenticate the user
+      before they are allowed to log in
+    get:
+      summary: Get the Authenticated user via Passport's Google strategy
+      description: ''
+      operationId: get_user_with_google
+      responses:
+        '200':
+          description: Login Successful
+      tags:
+        - Authenticate User With Google
+  /auth/google/callback:
+    summary: >-
+      This route will be  the route that users are redirected to if they wish to
+      login with Google
+    description: >-
+      This route will be  the route that users are redirected to if they wish to
+      login with Google. Once this route has been accessed the user will be able
+      to pick the account that they wish to sign in with
+    get:
+      summary: >-
+        The route the user will be redirected to, so that they can pick the
+        Google account they would like to sign in with
+      description: ''
+      operationId: retrieve_data_from_google
+      responses:
+        '200':
+          description: Login Successful
+      tags:
+        - Authenticate User With Google
+  /users/{id}:
+    summary: Get single user
+    description: >-
+      Thiss route allows you to get information on a single user that is
+      registered to the site.
+    get:
+      summary: 'Get information on a single user '
+      description: >-
+        This route allows you to get information on a single authenticated user
+        without  storing user information in the session
+      operationId: get_single_user
+      parameters:
+        - name: id
+          in: path
+          description: Id of user that will be used to get their information
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Request Failed
+      tags:
+        - Users
+    delete:
+      summary: 'Delete a Single User '
+      description: >-
+        This route allows you to delete a single user.
+        Option only for the Admin
+      operationId: delete_single_user
+      parameters:
+        - name: id
+          in: path
+          description: Id of user that will be used to delete the  user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Request Failed
+      tags:
+        - Users
+  /products:
+    summary: >-
+      This Route allows users to perform CRUD operations on the products that
+      are on the site 
+    get:
+      tags:
+        - Products
+      summary: >-
+        This route gets all of the products that are entered into the site's
+        database 
+      description: >-
+        This route gets all of the products that are entered into the site's
+        database. This functionality happens wheb the application first loads 
+      operationId: fetch_products
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+    post:
+      summary: 'This Route allows users to add a product to the database '
+      description: >-
+        This Route allows users to add a product to the database . This is done,
+        when the user fills in a frontend form
+      operationId: 'add_product'
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+      tags:
+        - Products
+  /products/{id}:
+    summary: >-
+      This Route allows users to perform CRUD operations on the products that
+      are on the site 
+    put:
+      summary: 'This Route allows users to update  product information in  the database '
+      description: >-
+        This Route allows users to update a product in  the database but only if they are administrators.
+        when the user fills in a frontend form
+      operationId: 'update_product'
+      parameters:
+        - name: id
+          in: path
+          description: Id of produvt  that will be used to update
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+      tags:
+        - Products
+  
+  
+  /cart:
+    summary: This rooute will allow you to get the logged in user's cart
+    description: >-
+      This rooute will allow you to get the logged in user's cart. This is nade
+      possible because the user gets stored in the session and then their id is
+      used  to match them to their cart
+    get:
+      summary: >-
+        This route allows users to view their cart when they click the cart
+        component 
+      description: ''
+      operationId: get_cart
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+      tags:
+        - Cart
+    delete:
+      summary: This route will clear  the user's cart
+      description: >-
+        This functionality will only happen once the items in the user's cart
+        have been paid for and made into an order 
+      operationId: clear)cart
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+      tags:
+        - Cart
+  /cart/{productid}:
+    summary: This route allows you to add and remove  a product to the user's cart
+    description: >-
+      This route allows you to add a product to the user's cart. This action
+      gets triggered via a frontend button-click
+    post:
+      summary: This route allows users to add products to their cart
+      description: >-
+        This route allows users to add products to their cart via a frontend
+        button-click
+      operationId: add_to_cart
+      parameters:
+        - name: productid
+          in: path
+          description: Id of cart that user wishes to add
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Unauthorized Access
+        '404':
+          description: Error
+      tags:
+        - Cart
+    delete:
+      summary: 'This route allows a user to delete a single product from their cart '
+      description: >-
+        This route allows a user to delete a single product from their cart .
+        This is done rthrough a button-click on the frontend
+      operationId: remove_single_product_from_cart
+      parameters:
+        - name: productid
+          in: path
+          description: Id of cart item  that user wishes to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Unauthorized Access
+        '404':
+          description: Error
+      tags:
+        - Cart
+  /stripe/checkout:
+    summary: This route redirets the user to Stripe's payment gateway
+    description: >-
+      This route redirets the user to Stripe's payment gateway. It is here ,
+      that the user can enter their payment details and email address to create
+      their order
+    post:
+      summary: Navigates user to Stripe's payment gateway
+      description: ''
+      operationId: stripe_gateway
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Error
+      tags:
+        - Checkout and Make an Order
+  /orders:
+    summary: >-
+      This route allows you to get all of the orders that a user has made on the
+      site
+    description: To access all the functionality of this route, the user must be logged in
+    get:
+      summary: 'Get all of the orders from a logged in users'' account '
+      description: ''
+      operationId: get_all_orders
+      responses:
+        '200':
+          description: Success
+        '403':
+          description: Unauthorized Access
+        '404':
+          description: Error
+      tags:
+        - Orders
+  /orders/{orderid}:
+    summary: Get single order from logged in users' account
+    description: >-
+      If the user would like to view details of a single order , then they would
+      use this route to do so 
+    get:
+      summary: 'Get single order from a logged in  users account '
+      description: >-
+        This route lets the user view details about a specific order that they
+        placed 
+      operationId: get_single_order
+      parameters:
+        - name: orderid
+          in: path
+          description: Id of order  that user wishes to view
+          required: true
+          schema:
+            type: string
+      responses:
+         '200':
+          description: Success
+         '403':
+          description: Unauthorized Access
+         '404':
+          description: Error
+      tags:
+        - Orders
+    delete:
+      summary: 'Delete  single order from a logged in  users account '
+      description: >-
+        This route lets the user delete a specific order that they
+        placed  but should only be  used for users that are administrators of the site
+      operationId: delete_single_order
+      parameters:
+        - name: orderid
+          in: path
+          description: Id of order that user wishes to delete
+          required: true
+          schema:
+            type: string
+      responses:
+         '200':
+          description: Success
+         '403':
+          description: Unauthorized Access
+         '404':
+          description: Error
+      tags:
+        - Orders    
