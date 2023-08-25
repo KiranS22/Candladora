@@ -17,12 +17,12 @@ const swaggerDocument = YAML.load("./backendDocs.yaml");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-app.use(cors());
-
-// {
-//   origin: `${process.env.CLIENT_URL}`,
-//   credentials: true,
-// }
+app.use(
+  cors({
+    origin: `${process.env.CLIENT_URL}`,
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
