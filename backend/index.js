@@ -109,13 +109,16 @@ const productsRouter = require("./Routes/products/products");
 const ordersRouter = require("./Routes/orders/orders");
 const stripeRouter = require("./Routes/Stripe/Stripe");
 
-
 app.use("/products", productsRouter);
 app.use("/cart", cartRouter);
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/orders", ordersRouter);
 app.use("/stripe", stripeRouter);
+
+app.get("/", (req, res) => {
+  res.send({ status: "success", message: "connected" });
+});
 
 app.listen(PORT, () => {
   console.log(`Ecommerce app listening on port ${PORT}`);
