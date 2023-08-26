@@ -11,7 +11,9 @@ const CartItem = ({ item }) => {
   const [itemQuantity, setItemQuantity] = useState(item.quantity);
 
   const updateCartQuantity = (e, id) => {
+    console.log("Update quantity value", e.target.value);
     setItemQuantity(e.target.value);
+
     dispatch(updateQty({ id: id, value: e.target.value }));
   };
   const deleteSingleItemInDb = async (id) => {

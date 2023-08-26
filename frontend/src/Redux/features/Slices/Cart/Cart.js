@@ -24,7 +24,6 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      
       let item = state.cart.find((item) => item.id === action.payload.id);
       if (item) {
         item.quantity = item.quantity + 1;
@@ -35,8 +34,10 @@ const cartSlice = createSlice({
       state.cartTotal += Number(action.payload.price);
     },
     updateQty: (state, action) => {
+      console.log("Update qty action.payload", action.payload.id);
       state.cart = state.cart.map((cartItem) => {
-        if (cartItem.id === Number(action.payload.id)) {
+        if (Number(cartItem.id) === Number(action.payload.id)) {
+          console.log("inside if");
           return { ...cartItem, quantity: Number(action.payload.value) };
         } else {
           return cartItem;
@@ -63,11 +64,15 @@ const cartSlice = createSlice({
       //set cartCount tp cartCount - quantity
     },
     findCartItemsTotal: (state) => {
+      console.log("cart in redux ", state.cart);
       let cartTotal = 0.0;
       //Run a Loop.
+      console.log("cart total running");
       state.cart.forEach((element) => {
         cartTotal += Number(element.price) * Number(element.quantity);
       });
+
+      console.log("cart total ", cartTotal);
 
       state.cartTotal = cartTotal.toFixed(2);
       state.cartTotal = Number(state.cartTotal);

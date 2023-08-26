@@ -2,7 +2,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="text-center ">
+      <footer className="text-center">
         Candladora - &#169; 2022 - All Rights Reversed
         <div className="row">
           <p>Developed By:</p>
