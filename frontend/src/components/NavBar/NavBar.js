@@ -35,13 +35,13 @@ const Navbar = () => {
       } else {
       }
     } catch (err) {
-      console.log({ status: "Error", message: err.meesage })
+      console.log({ status: "Error", message: err.meesage });
     }
   };
   return (
-    <nav className="navbar navbar-expand-lg  navbar-colors">
+    <nav className="navbar navbar-expand-lg navbar-colors">
       <div className="container-fluid">
-        <Link className="navbar-brand logo" to="/">
+        <Link className="navbar-brand logo text-white" to="/">
           Candladora
         </Link>
         <button
@@ -53,28 +53,28 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon text-white"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item underline">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link text-white" to="/">
                 Home
               </Link>
             </li>
 
             <li className="nav-item underline">
-              <Link className="nav-link" to="/products">
+              <Link className="nav-link text-white" to="/products">
                 Products
               </Link>
             </li>
             <li className="nav-item underline">
-              <Link className="nav-link" to="/products/add">
+              <Link className="nav-link text-white" to="/products/add">
                 Add A Product
               </Link>
             </li>
             <li className="nav-item underline">
-              <Link className="nav-link" to="/order-history">
+              <Link className="nav-link text-white " to="/order-history">
                 Order History
               </Link>
             </li>
@@ -90,10 +90,11 @@ const Navbar = () => {
               />
             </div>
             <li className="nav-item">
-              <Link to="/cart" className="nav-link">
+              <Link to="/cart" className="nav-link text-white">
                 <img
                   className="cart-img"
-                  src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
+                  src="https://img.icons8.com/material-sharp/24/FFFFFF/shopping-cart.png"
+                  alt="shopping-cart"
                   style={{ width: 30, height: 30 }}
                 />
                 {cartCount > 0 ? (
@@ -105,12 +106,12 @@ const Navbar = () => {
             {!loggedIn ? (
               <>
                 <li className="nav-item underline">
-                  <Link to="/login" className="nav-link">
+                  <Link to="/login" className="nav-link text-white">
                     Log In
                   </Link>
                 </li>
                 <li className="nav-item underline">
-                  <Link to="/register" className="nav-link">
+                  <Link to="/register" className="nav-link text-white">
                     Register
                   </Link>
                 </li>
@@ -118,13 +119,17 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to="/profile" className="nav-link">
-                    <img src="https://img.icons8.com/material/24/null/administrator-male--v1.png" />
+                  <Link to="/profile" className="nav-link text-white">
+                    <img
+                      src="https://img.icons8.com/ios-filled/50/FFFFFF/user-female-circle.png"
+                      alt="user-female-circle"
+                      style={{ width: 30, height: 30 }}
+                    />
                   </Link>
                 </li>
                 <li className="nav-item underline">
                   <span
-                    className="nav-link cursor-pointer"
+                    className="nav-link text-white  cursor-pointer"
                     onClick={() => {
                       logoutHandler();
                     }}
