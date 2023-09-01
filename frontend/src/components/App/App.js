@@ -37,7 +37,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className="App">
       {loadingProducts && loadingCart ? (
         <div className="preloader-container">
           <div className="lds-dual-ring"></div>
@@ -45,7 +45,7 @@ const App = () => {
       ) : null}
       <ApplicationRoutes />
       <ToastContainer />
-    </>
+    </div>
   );
 };
 

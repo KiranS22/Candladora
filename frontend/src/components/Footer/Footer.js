@@ -1,30 +1,31 @@
 import React from "react";
+
 const Footer = () => {
   return (
-    <>
-      <footer className="text-center">
+    <footer className="custom-footer">
+      <p className="footer-text">
         Candladora - &#169; 2022 - All Rights Reversed
-        <div className="row">
-          <p>Developed By:</p>
-          <div className="social-link">
-            <i
-              onClick={() => {
-                window.location.href =
-                  "https://www.linkedin.com/in/kiran-sundal-ba3672212/";
-              }}
-              className="fa-brands fa-linkedin f-icon"
-            ></i>
+      </p>
+      <div className="footer-row">
+        <p className="footer-developer">Developed By:</p>
+        <div className="social-links">
+          <i
+            class="fa-brands fa-linkedin-in social-icon"
+            onClick={() => {
+              window.location.href =
+                "https://www.linkedin.com/in/kiran-sundal-ba3672212/";
+            }}
+          ></i>
 
-            <i
-              onClick={() => {
-                window.location.href = "https://github.com/KiranS22";
-              }}
-              className="fa-brands fa-github f-icon"
-            ></i>
-          </div>
+          <i
+            class="fa-brands fa-github social-icon"
+            onClick={() => {
+              window.location.href = "https://github.com/KiranS22";
+            }}
+          ></i>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 };
 

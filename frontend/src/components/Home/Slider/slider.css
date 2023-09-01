@@ -1,165 +1,92 @@
-body,
-html {
+.slider {
   width: 100%;
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-
-.slider-container {
   height: 100vh;
-}
-
-slider {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #1f1f1f;
   overflow: hidden;
+  position: relative;
+}
+.slider .wrapper {
+  height: 100vh;
+  transition: 0.5s all linear;
+  will-change: transform;
+}
+.slider .arrows {
   position: absolute;
+  top: 50%;
+  background: none;
+  height: 60px;
+  border: 0;
+  cursor: pointer;
+  transition: ease 0.3s all;
+  outline: none;
 }
-
-slider > * {
+.slider .arrows.prev {
+  left: 0;
+}
+.slider .arrows.prev:hover {
+  opacity: 0.7;
+  left: -10px;
+}
+.slider .arrows.next {
+  right: 0;
+}
+.slider .arrows.next:hover {
+  right: -10px;
+  opacity: 0.7;
+}
+.slider .dots-container {
+  height: auto;
+  margin: 0;
+  padding: 0;
   position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  left: 100%;
-  background-color: #1f1f1f;
-  -webkit-animation: slide 15s infinite;
-  -moz-animation: slide 15s infinite;
-  -o-animation: slide 15s infinite;
-  animation: slide 15s infinite;
-  overflow: hidden;
+  width: auto;
+  text-align: center;
+  left: 50%;
+  bottom: 9px;
+  transform: translateX(-50%);
+  z-index: 10;
+  list-style-type: none;
 }
-
-slide:nth-child(1) {
-  left: 0%;
-  -webkit-animation-delay: -1s;
-  -moz-animation-delay: -1s;
-  -o-animation-delay: -1s;
-  animation-delay: -1s;
-  background-image: url(https://images.unsplash.com/photo-1528351655744-27cc30462816?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80E);
+.slider .dots-container li {
+  display: inline-block;
+  padding: 5px;
+}
+.slider .dots-container li.active button {
+  color: #00D8FF;
+}
+.slider .dots-container li button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+.slider .dots-container li button:hover {
+  text-decoration: none;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.slider .toggle-play {
+  background: transparent;
+  border: none;
+  height: auto;
+  position: absolute;
+  width: auto;
+  right: 5%;
+  bottom: 9px;
+  color: #3d3d3d;
+  z-index: 1000000;
+}
+.slider .toggle-play:hover {
+  text-decoration: none;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.slider .each-slide {
+  width: 100vw;
+  height: 100vh;
+  float: left;
+  line-height: 100vh;
+  font-size: 40vh;
+  text-align: center;
   background-size: cover;
-  background-position: bottom;
-}
-
-slide:nth-child(2) {
-  -webkit-animation-delay: 2s;
-  -moz-animation-delay: 2s;
-  -o-animation-delay: 2s;
-  animation-delay: 2s;
-  background-image: url(https://images.unsplash.com/photo-1606418359454-a71d43fc394d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);
-  background-size: cover;
-  background-position: bottom;
-}
-
-slide:nth-child(3) {
-  -webkit-animation-delay: 5s;
-  -moz-animation-delay: 5s;
-  -o-animation-delay: 5s;
-  animation-delay: 5s;
-  background-image: url(https://cantocandle.com/wp-content/uploads/2021/04/trio-coast-yoghurt-pot-landscape-800x400.jpg);
-  background-size: cover;
-  background-position: bottom;
-}
-
-@-webkit-keyframes slide {
-  0% {
-    left: 100%;
-    width: 100%;
-  }
-  5% {
-    left: 0%;
-  } /* IN */
-  25% {
-    left: 0%;
-  } /*SHOW*/
-  30% {
-    left: -100%;
-    width: 100%;
-  } /*OUT*/
-  30.00001% {
-    left: -100%;
-    width: 0%;
-  }
-  100% {
-    left: 100%;
-    width: 0%;
-  } /*SLEEP*/
-}
-
-@-moz-keyframes slide {
-  0% {
-    left: 100%;
-    width: 100%;
-  }
-  5% {
-    left: 0%;
-  } /* IN */
-  25% {
-    left: 0%;
-  } /*SHOW*/
-  30% {
-    left: -100%;
-    width: 100%;
-  } /*OUT*/
-  30.00001% {
-    left: -100%;
-    width: 0%;
-  }
-  100% {
-    left: 100%;
-    width: 0%;
-  } /*SLEEP*/
-}
-
-@-o-keyframes slide {
-  0% {
-    left: 100%;
-    width: 100%;
-  }
-  5% {
-    left: 0%;
-  } /* IN */
-  25% {
-    left: 0%;
-  } /*SHOW*/
-  30% {
-    left: -100%;
-    width: 100%;
-  } /*OUT*/
-  30.00001% {
-    left: -100%;
-    width: 0%;
-  }
-  100% {
-    left: 100%;
-    width: 0%;
-  } /*SLEEP*/
-}
-
-@keyframes slide {
-  0% {
-    left: 100%;
-    width: 100%;
-  }
-  5% {
-    left: 0%;
-  } /* IN */
-  25% {
-    left: 0%;
-  } /*SHOW*/
-  30% {
-    left: -100%;
-    width: 100%;
-  } /*OUT*/
-  30.00001% {
-    left: -100%;
-    width: 0%;
-  }
-  100% {
-    left: 100%;
-    width: 0%;
-  } /*SLEEP*/
+  background-position: center center;
+  background-color: transparent;
 }
