@@ -50,7 +50,7 @@ const CartItem = ({ item }) => {
             type="number"
             min={1}
             onChange={(e) => updateCartQuantity(e, item.id)}
-            className="form-control w-50"
+            className="form-control qty-box"
             value={itemQuantity}
           />
         </div>

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectCart } from "../../../Redux/features/Slices/Cart/Cart";
 const CheckoutBtn = () => {
   const cartItems = useSelector(selectCart);
- 
+
   const handlePayNow = async () => {
     const response = await axios.post(
       `${process.env.REACT_APP_SERVER_URL}/stripe/checkout`,
@@ -19,10 +19,7 @@ const CheckoutBtn = () => {
   };
   return (
     <>
-      <button
-        className="btn-checkout btn-reverse"
-        onClick={() => handlePayNow()}
-      >
+      <button className="btn btn-dark mx-3" onClick={() => handlePayNow()}>
         Pay Now
       </button>
     </>

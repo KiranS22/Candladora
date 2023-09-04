@@ -209,9 +209,6 @@ footer {
   background-color: #2980b9;
 }
 /* Product styling */
-.card {
-  border: 2px solid magenta;
-}
 .card-title {
   font-weight: 300;
   font-size: 2rem;
@@ -341,5 +338,70 @@ footer {
 
   .card {
     max-width: 100%;
+  }
+}
+
+/*  cart Page Stylings  */
+
+.table {
+  height: 60vh;
+}
+
+.sub-total em,
+.sub-total span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.qty-box {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+  color: #000;
+}
+/* Media queries using Bootstrap's predefined breakpoints */
+@media (max-width: 575.98px) {
+  .App {
+    border: 2px solid magenta;
+    overflow-y: auto; /* Add vertical scrollbar when needed */
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .cart-controls {
+    margin: 20px 0;
+    flex-direction: column;
+  }
+  footer {
+    width: 100vw;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .App {
+    border: 2px solid #e74c3c;
+  }
+  .cart-controls button,
+  .cart-controls a {
+    margin: 18px 0;
+  }
+
+  .table {
+    height: 70vh;
+  }
+
+  /* Rest of your existing styles... */
+}
+
+/* Media queries */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .App {
+    border: 2px solid #2980b9;
+  }
+}
+
+@media (min-width: 992px) {
+  .App {
+    border: 2px solid #27ae60;
   }
 }

@@ -23,133 +23,136 @@ const Profile = () => {
       { withCredentials: true }
     );
     if (response.data.status == "success") {
-   
+
       dispatch(updateUser(response.data.user));
     }
   };
 
   return (
     <>
-      <div className="container">
-        <header className="col-md-6 text-center">
-          <h2>Update Details </h2>
-        </header>
-        <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 ">
+     <div className="container-fluid">
+  <div className="row justify-content-center">
+    <div className="col-md-8 col-lg-6 col-xl-4">
+      <div className="card mt-5">
+        <div className="card-body">
+          <h2 className="card-title text-center">Update Details</h2>
           <form onSubmit={(e) => handleSubmit(e)} method="POST">
-            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"></div>
-
-            <label className="form-label" htmlFor="firstName">
-              First Name:
-            </label>
-            <div className="form-outline mb-4">
+            <div className="mb-3">
+              <label htmlFor="firstName" className="form-label">
+                First Name:
+              </label>
               <input
                 type="text"
                 id="firstName"
-                className="form-control form-control-lg"
+                className="form-control"
                 placeholder="Enter your First Name"
                 value={user.firstName}
-                onChange={(e) =>
-                  setUser({ ...user, firstName: e.target.value })
-                }
+                onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                 name="firstName"
               />
             </div>
 
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="lastName">
+            <div className="mb-3">
+              <label htmlFor="lastName" className="form-label">
                 Last Name:
               </label>
               <input
                 type="text"
                 id="lastName"
-                className="form-control form-control-lg"
+                className="form-control"
                 placeholder="Enter your Last Name"
                 value={user.lastName}
                 onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                 name="lastName"
               />
             </div>
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="lname">
+
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
                 Email:
               </label>
               <input
                 type="email"
                 id="email"
-                className="form-control form-control-lg"
+                className="form-control"
                 placeholder="Enter a valid email address"
                 value={user.email}
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
                 name="email"
               />
             </div>
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="tel">
-                Mobile Number
+
+            <div className="mb-3">
+              <label htmlFor="tel" className="form-label">
+                Mobile Number:
               </label>
               <input
                 type="tel"
                 id="tel"
-                className="form-control form-control-lg"
+                className="form-control"
                 placeholder="Enter mobile Number"
                 value={user.telNumber}
                 onChange={(e) => setUser({ ...user, tel: e.target.value })}
               />
             </div>
 
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="country">
-                Address
+            <div className="mb-3">
+              <label htmlFor="country" className="form-label">
+                Address:
               </label>
               <input
                 type="text"
                 id="country"
                 name="country"
-                className="form-control form-control-lg"
+                className="form-control"
                 placeholder="Address"
                 value={user.address}
                 onChange={(e) => setUser({ ...user, address: e.target.value })}
               />
             </div>
 
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="city">
-                City
+            <div className="mb-3">
+              <label htmlFor="city" className="form-label">
+                City:
               </label>
               <input
                 type="text"
                 id="city"
                 name="city"
-                className="form-control form-control-lg"
-                placeholder="city"
+                className="form-control"
+                placeholder="City"
                 value={user.city}
                 onChange={(e) => setUser({ ...user, city: e.target.value })}
               />
             </div>
 
-            <div className="form-outline mb-3">
-              <label className="form-label" htmlFor="city">
-                Postcode
+            <div className="mb-3">
+              <label htmlFor="postcode" className="form-label">
+                Postcode:
               </label>
               <input
                 type="text"
-                id="city"
-                name="city"
-                className="form-control form-control-lg"
-                placeholder="postcode"
+                id="postcode"
+                name="postcode"
+                className="form-control"
+                placeholder="Postcode"
                 value={user.postcode}
                 onChange={(e) => setUser({ ...user, postcode: e.target.value })}
               />
             </div>
 
-            <div className="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" className="btn  btn-outline-dark btn-lg">
+            <div className="text-center">
+              <button type="submit" className="btn btn-dark btn-lg">
                 Update
               </button>
             </div>
           </form>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
     </>
   );
 };

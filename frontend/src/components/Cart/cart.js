@@ -30,86 +30,67 @@ const Cart = () => {
   };
 
   useEffect(() => {
-  
-
     dispatch(findCartItemsTotal());
   }, [cart]);
+
   const emptyCart = async () => {
     dispatch(clearCart());
     deleteFromDatabase();
   };
+
   return (
-    <>
-      <div className="cart">
-        <div className="container">
-          <div className="grid_12">
-            <h1 className="text-center">Your Cart</h1>
+    <div className="cart">
+      <div className="container">
+        <h1 className="text-center mt-3">Your Cart</h1>
+        {cartCount > 0 ? (
+          <div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.map((item, index) => (
+                  <CartItem key={index} item={item} />
+                ))}
+              </tbody>
+            </table>
           </div>
+        ) : (
+          <div className="text-center empty">
+            <h3>Cart is empty</h3>
+          </div>
+        )}
+
+        <div className="d-flex justify-content-center mt-3">
           {cartCount > 0 ? (
-            <div>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((item) => (
-                    <CartItem item={item} />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className="text-center  empty">
-              <h3>Cart is empty</h3>
-            </div>
-          )}
+            <button
+              className="btn btn-danger mt-2"
+              onClick={() => emptyCart()}
+            >
+              Clear All ({cartCount})
+            </button>
+          ) : null}
+        </div>
 
-          <div className="grid_12 delivery-payment">
-            <div className="grid_6 delivery-address">
-              {cartCount <= 0 ? (
-                <div></div>
-              ) : (
-                <button
-                  className="btn-summary btn btn-outline-danger"
-                  onClick={() => emptyCart()}
-                >
-                  Clear All({cartCount})
-                </button>
-              )}
-            </div>
+        <div className="d-flex justify-content-between  cart-controls">
+          <div className="sub-total">
+            <em>Sub Total:</em>
+            <span className="amount">${cartTotal}</span>
           </div>
-
-          <div className="grid_12 summary">
-            <div className="inner_container">
-              <div className="summary-content">
-                <div className="col_1of2 meta-data">
-                  <div className="sub-total">
-                    <em>Sub Total: </em>
-                    <span className="amount"></span>
-                  </div>
-                </div>
-                <div className="col_1of2">
-                  <div className="total">
-                    <span className="amount">£{cartTotal}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="btn-summary">
-                <Link to="/products" className="btn-checkout btn-reverse">
-                  Continue Shopping
-                </Link>
-                {cartCount > 0 && user !== null ? <CheckoutBtn /> : null}
-              </div>
-            </div>
+          <div className="btn-summary">
+            <Link to="/products" className="btn btn-primary">
+              Continue Shopping
+            </Link>
+            {cartCount > 0 && user !== null ? <CheckoutBtn /> : null}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
