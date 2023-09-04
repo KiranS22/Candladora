@@ -3,22 +3,16 @@ import "./slider.css";
 
 const slides = [
   {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=497)",
+    eachSlide:
+      "url(https://images.unsplash.com/photo-1528351655744-27cc30462816?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80E)",
   },
   {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=291)",
+    eachSlide:
+      "url(https://www.hoppingharecandles.co.uk/wp-content/uploads/2018/01/Hopping-Hare-Rose-and-Oud-lit-candle-landscape-with-roses-and-petals.jpg)",
   },
   {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=786)",
-  },
-  {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=768)",
-  },
-  {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=726)",
-  },
-  {
-    eachSlide: "url(https://unsplash.it/1900/1024/?image=821)",
+    eachSlide:
+      "url(https://cantocandle.com/wp-content/uploads/2021/04/trio-coast-yoghurt-pot-landscape-800x400.jpg)",
   },
 ];
 

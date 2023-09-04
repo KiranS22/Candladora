@@ -48,12 +48,13 @@ const Register = () => {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">
               <img
-                src="https://thumbs.dreamstime.com/b/register-now-web-button-illustration-isolated-white-background-register-now-button-pink-121304717.jpg"
+                src="https://www.freeiconspng.com/uploads/sign-up-button-png-2.png"
                 className="img-fluid"
-                alt="Sample image"
+                alt="Sign-up logo"
               />
             </div>
-            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-4">
+              <h2 className="page-titles text-center"> Register</h2>
               <form onSubmit={(e) => handleSubmit(e)} method="POST">
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p className="lead fw-normal mb-0 me-3">Register with</p>
@@ -231,10 +232,7 @@ const Register = () => {
                 </div>
 
                 <div className="text-center text-lg-start mt-4 pt-2">
-                  <button
-                    type="submit"
-                    className="btn  btn-outline-dark btn-lg"
-                  >
+                  <button type="submit" className="btn btn-secondary btn-lg ">
                     Register
                   </button>
                   <p className="small fw-bold mt-2 pt-1 mb-0">

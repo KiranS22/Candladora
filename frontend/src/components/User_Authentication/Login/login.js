@@ -34,14 +34,13 @@ const Login = () => {
         { withCredentials: true }
       );
 
-
       dispatch(logInUser(response.data.user));
       const status = response.data.status;
       if (status === "success") {
         navigate("/");
       }
     } catch (err) {
-      console.log({ status: "Error", message: err.meesage })
+      console.log({ status: "Error", message: err.meesage });
     }
   };
 
@@ -58,12 +57,13 @@ const Login = () => {
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-md-9 col-lg-6 col-xl-5">
                 <img
-                  src="https://thumbs.dreamstime.com/b/login-elegant-pink-diamond-button-isolated-abstract-illustration-105953029.jpg"
+                  src="https://www.nicepng.com/png/full/136-1366211_group-of-10-guys-login-user-icon-png.png"
                   className="img-fluid"
-                  alt="Sample image"
+                  alt="Login image"
                 />
               </div>
-              <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-4">
+                <h2 className="page-titles text-center"> Login</h2>
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p className="lead fw-normal mb-0 me-3">Log in with</p>
                   <div className="row">
@@ -75,14 +75,14 @@ const Login = () => {
                       >
                         <img
                           style={{
-                            width: "20px",
+                            width: "40px",
                             marginBottom: "3px",
                             marginRight: "5px",
                           }}
                           alt="Google sign-in"
                           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
                         />
-                        Login with Google
+                        Google
                       </button>
                     </div>
                   </div>
@@ -129,14 +129,9 @@ const Login = () => {
 
                   <div className="text-center text-lg-start mt-4 pt-2">
                     <button
-                      type="sumbit"
-                      className="btn btn-primary btn-lg stylesForButton"
-                      style={{
-                        paddingLeft: "2.5rem",
-                        paddingRight: "2.5rem",
-                        backgroundColor: "#68243c",
-                        color: "#ffffff",
-                      }}
+                      type="submit"
+                      className="btn btn-secondary btn-lg "
+
                     >
                       Login
                     </button>
