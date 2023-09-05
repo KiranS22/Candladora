@@ -43,7 +43,7 @@ const Cart = () => {
       <div className="container">
         <h1 className="text-center mt-3">Your Cart</h1>
         {cartCount > 0 ? (
-          <div>
+          <div className="table-container">
             <table className="table">
               <thead>
                 <tr>

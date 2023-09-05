@@ -354,8 +354,8 @@ footer {
 }
 
 .qty-box {
+  min-width: 50px;
   width: 50%;
-  height: 50%;
   text-align: center;
   color: #000;
 }
@@ -363,10 +363,6 @@ footer {
 @media (max-width: 575.98px) {
   .App {
     border: 2px solid magenta;
-    overflow-y: auto; /* Add vertical scrollbar when needed */
-    border-collapse: collapse;
-    width: 100%;
-    white-space: nowrap; /* Prevent text wrapping */
   }
   .cart-controls {
     margin: 20px 0;
@@ -374,6 +370,10 @@ footer {
   }
   footer {
     width: 100vw;
+  }
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
   }
 }
 

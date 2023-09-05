@@ -48,13 +48,48 @@ cartRouter.post("/:productid", async (req, res) => {
         res.send({ status: "success", message: "Product added successfully" });
       }
     } else {
-      res.status(403).send({ status: "error", message: "User is not loggedIn!" });
+      res
+        .status(403)
+        .send({ status: "error", message: "User is not loggedIn!" });
     }
   } catch (err) {
     res.status(404).send({ status: "error", message: err.message });
   }
 });
 
+cartRouter.put("/:productid", async (req, res) => {
+  try {
+    if (req.session.user) {
+      const { user } = req.session;
+      const { productid } = req.params;
+      const { product_qty, product_price } = req.body;
+
+      const existingProducts = await pool.query(
+        "SELECT * from cart WHERE product_id =$1 AND user_id =$2",
+        [productid, user.id]
+      );
+      if (existingProducts.rowCount > 0) {
+        const updatedQty = Number(product_qty);
+        const updatedProduct = await pool.query(
+          "UPDATE  cart SET product_qty = $1 WHERE product_id = $2 AND user_id = $3",
+          [updatedQty, productid, user.id]
+        );
+        res.send({
+          status: "success",
+          message: "Quantity updated successfully",
+        });
+      } else {
+        res.send({ status: "error", message: "Product not found" });
+      }
+    } else {
+      res
+        .status(403)
+        .send({ status: "error", message: "User is not loggedIn!" });
+    }
+  } catch (err) {
+    res.status(404).send({ status: "error", message: err.message });
+  }
+});
 cartRouter.delete("/:productid", async (req, res) => {
   try {
     const { productid } = req.params;

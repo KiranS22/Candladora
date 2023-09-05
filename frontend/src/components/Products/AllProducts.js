@@ -61,6 +61,22 @@ const AllProducts = () => {
               <div className="row">
                 <div className="col s12">
                   <p className="price">${product.price}</p>
+                  <div>
+                    <button
+                      className="btn btn-primary"
+                      type="button"
+                      onClick={() => handleClick(product)}
+                    >
+                      Add to Cart
+                    </button>
+
+                    <Link
+                      to={`/products/${product.id}`}
+                      className="btn btn-outline-dark mt-4"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

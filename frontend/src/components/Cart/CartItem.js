@@ -7,12 +7,22 @@ import {
   selectCartTotal,
 } from "../../Redux/features/Slices/Cart/Cart";
 const CartItem = ({ item }) => {
+
   const dispatch = useDispatch();
   const [itemQuantity, setItemQuantity] = useState(item.quantity);
 
-  const updateCartQuantity = (e, id) => {
-    console.log("Update quantity value", e.target.value);
+  const updateCartQuantity = async (e, id) => {
+    // if (e.target.value === "") return; //Empty
     setItemQuantity(e.target.value);
+    if (!(Number(e.target.value) > 0) || e.target.value === "") return;
+    // if (e.target.value === "" || e.target.value === "0") return;
+    console.log("Value before request", e.target.value);
+    const response = await axios.put(
+      `${process.env.REACT_APP_SERVER_URL}/cart/${item.id}`,
+      { product_qty: e.target.value, product_price: item.price },
+      { withCredentials: true }
+    );
+    console.log("Cart Item Response", response);
 
     dispatch(updateQty({ id: id, value: e.target.value }));
   };

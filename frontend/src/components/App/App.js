@@ -18,15 +18,19 @@ const App = () => {
 
   const getLoggedInUser = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/auth/auth-user`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/auth/auth-user`,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.data.status === "success") {
         const { user } = response.data;
         dispatch(logInUser(user));
       }
     } catch (err) {
+      //Toastify
       console.log("something went wrong");
     }
   };
