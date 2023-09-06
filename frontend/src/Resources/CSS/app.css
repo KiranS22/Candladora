@@ -98,116 +98,6 @@ footer {
   margin-top: 60px;
 }
 
-/* Text Limiting Class */
-.limit {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Product Details Styling */
-.details-container {
-  margin: 0 auto;
-  background: #fff;
-  max-width: 800px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Product Details Left Section */
-.left {
-  padding: 60px;
-  border-bottom: 3px solid rgba(255, 165, 0, 0.1);
-}
-
-/* Product Details Right Section */
-.right {
-  border-left: 2px solid rgba(255, 165, 0, 0.1);
-  padding: 40px;
-  padding-bottom: 0;
-  background: #f7f5f6;
-}
-
-/* Product Details Typography */
-.categorie {
-  margin-top: 10px;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #e74c3c;
-}
-
-.product {
-  font-size: 24px;
-  margin-top: 10px;
-  font-weight: 500;
-  color: #333;
-}
-
-.desc {
-  margin-top: 20px;
-  color: #777;
-}
-
-.desc li {
-  font-size: 14px;
-  margin: 15px 0;
-}
-
-.title-colour {
-  margin-top: 25px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.color-black,
-.color-white {
-  display: inline-block;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-.color-black {
-  background-color: #333;
-  color: #fff;
-}
-
-.color-white {
-  background-color: #fff;
-  color: #333;
-  margin-left: 10px;
-  border: 1px solid #ddd;
-}
-
-.price {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: 500;
-  display: inline-flex;
-}
-
-/* Buy Button Styling */
-.buy {
-  display: inline-flex;
-  position: absolute;
-  right: 40px;
-  bottom: 10px;
-  background-color: #3498db;
-  padding: 12px 30px;
-  color: #fff;
-  border-radius: 30px;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: background-color 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.buy:hover {
-  background-color: #2980b9;
-}
 /* Product styling */
 .card-title {
   font-weight: 300;
@@ -222,6 +112,9 @@ footer {
 
 .product-card .card .card-content {
   padding: 10px;
+}
+.card-content img {
+  max-width: 100%;
 }
 
 .product-card .card .price {
@@ -352,13 +245,62 @@ footer {
   font-size: 18px;
   font-weight: 500;
 }
-
+.cart {
+  min-height: 80vh;
+}
 .qty-box {
   min-width: 50px;
   width: 50%;
   text-align: center;
   color: #000;
 }
+
+/* Product details page stylings */
+
+.pd-wrap {
+  padding: 40px 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 90vh;
+}
+.heading-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.heading-section h2 {
+  font-size: 32px;
+  font-weight: 500;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.item img {
+  max-width: 100%;
+}
+.product-name {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 4px;
+}
+.product-price-discount {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px 0;
+  clear: both;
+}
+.product-price-discount span.line-through {
+  text-decoration: line-through;
+  margin-left: 10px;
+  font-size: 14px;
+  vertical-align: middle;
+  color: #a5a5a5;
+}
+.product-dtl p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #7a7a7a;
+}
+
 /* Media queries using Bootstrap's predefined breakpoints */
 @media (max-width: 575.98px) {
   .App {
@@ -374,6 +316,10 @@ footer {
   .table-container {
     width: 100%;
     overflow-x: auto;
+  }
+  .login-image,
+  .signup-image {
+    display: none;
   }
 }
 
@@ -403,5 +349,12 @@ footer {
 @media (min-width: 992px) {
   .App {
     border: 2px solid #27ae60;
+  }
+  .cart {
+    min-height: 90vh;
+  }
+
+  .products-container {
+    min-height: 90vh;
   }
 }

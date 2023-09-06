@@ -21,6 +21,7 @@ cartRouter.get("/", async (req, res) => {
 });
 
 cartRouter.post("/:productid", async (req, res) => {
+
   try {
     if (req.session.user) {
       const { user } = req.session;
@@ -31,7 +32,10 @@ cartRouter.post("/:productid", async (req, res) => {
         "SELECT * from cart WHERE product_id =$1 AND user_id =$2",
         [productid, user.id]
       );
+
+
       if (existingProducts.rowCount > 0) {
+        console.log("product already in cart");
         const foundProduct = existingProducts.rows[0];
         const foundProductQty = foundProduct.product_qty;
         const updatedQty = Number(foundProductQty) + 1;
@@ -45,6 +49,8 @@ cartRouter.post("/:productid", async (req, res) => {
           "INSERT INTO  cart (product_id, user_id, product_qty, product_price) VALUES($1, $2,$3, $4) RETURNING * ",
           [productid, user.id, product_qty, product_price]
         );
+      
+
         res.send({ status: "success", message: "Product added successfully" });
       }
     } else {
@@ -62,7 +68,7 @@ cartRouter.put("/:productid", async (req, res) => {
     if (req.session.user) {
       const { user } = req.session;
       const { productid } = req.params;
-      const { product_qty, product_price } = req.body;
+      const { product_qty } = req.body;
 
       const existingProducts = await pool.query(
         "SELECT * from cart WHERE product_id =$1 AND user_id =$2",

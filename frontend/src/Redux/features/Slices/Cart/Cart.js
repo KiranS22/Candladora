@@ -34,6 +34,9 @@ const cartSlice = createSlice({
       state.cartTotal += Number(action.payload.price);
     },
     updateQty: (state, action) => {
+      if (action.payload.id === "") 
+      console.log("Inside Redux updateQty: ");
+      console.log("id", action.payload.id, "value", action.payload.value);
       state.cart = state.cart.map((cartItem) => {
         if (Number(cartItem.id) === Number(action.payload.id)) {
           return { ...cartItem, quantity: Number(action.payload.value) };

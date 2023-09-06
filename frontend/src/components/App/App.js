@@ -25,13 +25,13 @@ const App = () => {
         }
       );
 
+
       if (response.data.status === "success") {
         const { user } = response.data;
         dispatch(logInUser(user));
       }
     } catch (err) {
-      //Toastify
-      console.log("something went wrong");
+
     }
   };
 

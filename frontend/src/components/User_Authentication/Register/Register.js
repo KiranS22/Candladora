@@ -49,7 +49,7 @@ const Register = () => {
             <div className="col-md-9 col-lg-6 col-xl-5">
               <img
                 src="https://www.freeiconspng.com/uploads/sign-up-button-png-2.png"
-                className="img-fluid"
+                className="img-fluid signup-image"
                 alt="Sign-up logo"
               />
             </div>

@@ -22,14 +22,15 @@ const AllProducts = () => {
         { product_qty: 1, product_price: product.price },
         { withCredentials: true }
       );
+      console.log("add to cart Response", response);
       dispatch(addToCart(product));
     } catch (err) {
-      console.log({ status: "Error", message: err.message });
+      console.log({ status: "Error", message: err.message, stack: err.stack });
     }
   };
 
   return (
-    <>
+    <div className="products-container">
       <header className="text-center mt-4">
         <h2 className="page-titles">All Products</h2>
       </header>
@@ -39,7 +40,7 @@ const AllProducts = () => {
           <div className="card z-depth-4" key={index}>
             <div className="card-content">
               <div className="row">
-                <div className="col s12">
+                <div className="col-12">
                   <img
                     src={
                       product.image ||
@@ -59,11 +60,11 @@ const AllProducts = () => {
                 </div>
               </div>
               <div className="row">
-                <div className="col s12">
+                <div className="col-12">
                   <p className="price">${product.price}</p>
-                  <div>
+                  <div className="row">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-secondary"
                       type="button"
                       onClick={() => handleClick(product)}
                     >
@@ -72,7 +73,7 @@ const AllProducts = () => {
 
                     <Link
                       to={`/products/${product.id}`}
-                      className="btn btn-outline-dark mt-4"
+                      className="btn btn-info mt-4"
                     >
                       View Details
                     </Link>
@@ -83,7 +84,7 @@ const AllProducts = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

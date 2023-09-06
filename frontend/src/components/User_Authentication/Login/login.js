@@ -58,7 +58,7 @@ const Login = () => {
               <div className="col-md-9 col-lg-6 col-xl-5">
                 <img
                   src="https://www.nicepng.com/png/full/136-1366211_group-of-10-guys-login-user-icon-png.png"
-                  className="img-fluid"
+                  className="img-fluid login-image"
                   alt="Login image"
                 />
               </div>
