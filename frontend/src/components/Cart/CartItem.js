@@ -41,12 +41,12 @@ const CartItem = ({ item }) => {
         <div className="items">
           <h3>{item.name}</h3>
           {item.image ? (
-            <img src={item.image} style={{ maxWidth: "140px" }} />
+            <img src={item.image}  />
           ) : (
             <img
               src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg?ver=6"
               alt={item.description}
-              style={{ maxWidth: "140px" }}
+
             />
           )}
         </div>
